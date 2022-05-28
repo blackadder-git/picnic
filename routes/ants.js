@@ -12,4 +12,10 @@ router.get( '/:id', antsController.getAnt );
 // POST to create a new ant
 router.post( '/', antsController.createAnt );
 
-module.exports = router; // what does this really do ?
+// PUT to update an ant
+router.put( '/:id', antsController.updateAnt );
+
+// DELETE to delete an ant
+router.delete( '/:id', antsController.deleteAnt );
+
+module.exports = router;

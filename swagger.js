@@ -8,10 +8,10 @@ const doc = {
     title: 'My API',
     description: 'Picnic API Documentation',
   },
-  host: 'localhost:3000',
-  schemes: ['http'],
-  //host: 'picnic-341.herokuapp.com',
-  //schemes: ['https'],  
+  //host: 'localhost:3000',
+  //schemes: ['http'],
+  host: 'picnic-341.herokuapp.com',
+  schemes: ['https'],  
 };
 
 const outputFile = './swagger.json'; // file to create

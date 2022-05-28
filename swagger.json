@@ -76,9 +76,6 @@
         "responses": {
           "201": {
             "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -102,6 +99,64 @@
             "description": "OK"
           }
         }
+      },
+      "put": {
+        "description": "Update ant",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "species": {
+                  "example": "any"
+                },
+                "points": {
+                  "example": "any"
+                },
+                "health": {
+                  "example": "any"
+                },
+                "colony": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete ant",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {}
       }
     },
     "/food/": {
@@ -157,9 +212,6 @@
         "responses": {
           "201": {
             "description": "Created"
-          },
-          "500": {
-            "description": "Internal Server Error"
           }
         }
       }
@@ -181,6 +233,74 @@
         "responses": {
           "200": {
             "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "description": "Update food",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "example": "any"
+                },
+                "category": {
+                  "example": "any"
+                },
+                "weight": {
+                  "example": "any"
+                },
+                "measure": {
+                  "example": "any"
+                },
+                "calories": {
+                  "example": "any"
+                },
+                "energy": {
+                  "example": "any"
+                },
+                "foodGroup": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete food",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Created"
           }
         }
       }

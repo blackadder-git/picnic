@@ -12,4 +12,10 @@ router.get( '/:id', foodsController.getFood );
 // POST to create a new food
 router.post( '/', foodsController.createFood );
 
-module.exports = router; // what does this really do ?
+// PUT to update a food
+router.put( '/:id', foodsController.updateFood );
+
+// DELETE to delete a food
+router.delete( '/:id', foodsController.deleteFood );
+
+module.exports = router;

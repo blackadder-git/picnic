@@ -7,11 +7,17 @@
  * Publish your project to Heroku
  * Be sure to create an env file for your local MongoDB credentials, and add config vars to your Heroku project. Your MongoDB credentials should never get pushed to git, so be sure to include your env file in your gitignore.
  * Submit your Github and Heroku links in I-learn
+ * 
+ * https://www.freecodecamp.org/news/how-to-choose-which-validator-to-use-a-comparison-between-joi-express-validator-ac0b910c1a8c/
+ * https://www.freecodecamp.org/news/get-started-with-graphql-and-nodejs/
+ * swagger : https://www.youtube.com/watch?v=apouPYPh_as
  */
 
 // imports
 const express = require( 'express' );
 const bodyParser = require( 'body-parser' ); // get access to request parameters 
+const apiErrorHandler = require( './errors/handler' );
+const Joi = require( 'joi' ); // returns a class
 
 // create port and application
 const port = process.env.PORT || 3000;
@@ -21,13 +27,15 @@ const app = express();
 app
     .use( bodyParser.json() )
     .use(( req, res, next ) => {
-        res.setHeader('Access-Control-Allow-Origin', '*'); // CORS
+        res.setHeader( 'Access-Control-Allow-Origin', '*' ); // CORS
         next();
     })
-    .use( '/', require( './routes' )); // goto routes
+    .use( '/', require( './routes' )) // goto routes
+    .use( apiErrorHandler ); // last middleware
 
 // load db connection
 const mongodb = require( './db/connect' );
+
 
 // listen if connection is made
 mongodb.initDb(( err, mongodb ) => {

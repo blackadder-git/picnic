@@ -15,4 +15,4 @@ router.get( '/', ( req, res ) => {
     // res.json( {'Hello': 'Ants'} );
 });
 
-module.exports = router; // what does this really do ?
+module.exports = router; // make public
