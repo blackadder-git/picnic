@@ -23,6 +23,17 @@ const Joi = require( 'joi' ); // returns a class
 const port = process.env.PORT || 3000;
 const app = express();
 
+
+/*
+OAUTH
+I´ve been reading a lot to understand oauth.  I have several promising implementation ideas including
+https://www.npmjs.com/package/passport-oauth
+https://youtu.be/SBvmnHTQIPY
+https://tomanagle.medium.com/google-oauth-with-node-js-4bff90180fe6
+At this point, I´m not sure what to do with the access token that is returned.  Do I save it, is it saved for me or do I need to give permission each time?
+I expect to implement a working login this week
+*/
+
 // load routes
 app
     .use( bodyParser.json() )
