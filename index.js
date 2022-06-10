@@ -18,12 +18,13 @@ const express = require( 'express' );
 const bodyParser = require( 'body-parser' ); // get access to request parameters 
 const apiErrorHandler = require( './errors/handler' );
 const Joi = require( 'joi' ); // returns a class for validation
-const { auth } = require('express-openid-connect'); // dereference require, store return in auth variable
-require('dotenv').config();
+const { auth } = require( 'express-openid-connect' ); // dereference require, store return in auth variable
+require( 'dotenv' ).config();
 
 // create port and application
 const port = process.env.PORT || 3000;
 const app = express();
+app.set( 'view engine', 'ejs' );
 
 /*
 OAUTH

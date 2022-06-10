@@ -17,7 +17,7 @@ const options = {
 
 // pass requests to swaggerDocument ... does this load the UI ?
 // #swagger.ignore = true
-router.get( '/', swaggerUi.setup( swaggerDocument, options ));
-//router.get( '/', requiresAuth(), swaggerUi.setup( swaggerDocument ));
+//router.get( '/', swaggerUi.setup( swaggerDocument, options ));
+router.get( '/', requiresAuth(), swaggerUi.setup( swaggerDocument ));
 
 module.exports = router; // what does this really do ?

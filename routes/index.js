@@ -2,6 +2,9 @@ const router = require( 'express' ).Router();
 const path = require( 'path' );
 const { auth, requiresAuth } = require('express-openid-connect'); // dereference return, store in variables
 
+// route any uri that begins with /admin
+router.use( '/admin', require( './admin' )); // goto admin.js
+
 // route any uri that begins with /api-docs
 router.use( '/api-docs', require( './swagger' )); // goto swagger.js
 
@@ -17,14 +20,25 @@ router.use( '/foods', require( './foods' )); // goto food.js
 // req.isAuthenticated is provided from the auth router
 router.get( '/', ( req, res ) => {
    console.log( req.oidc.isAuthenticated() );
-   
+
+    if ( req.oidc.isAuthenticated() ) {
+        //res.sendFile( path.join(__dirname, '../views/admin.html') );
+        res.render( 'admin' ); 
+    }
+    else {
+        res.render( 'index', {
+            message: 'Welcome ...'
+        } );
+    }    
+
+    /*
     if ( req.oidc.isAuthenticated() ) {
         res.sendFile( path.join(__dirname, '../views/admin.html') );
     }
     else {
         res.sendFile( path.join(__dirname, '../views/index.html') );
         //res.sendFile( path.join(__dirname, '../views/index.html') );
-    }
+    }*/
 });
 
 // require oauth to view profile
