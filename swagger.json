@@ -10,8 +10,35 @@
   "schemes": [
     "https"
   ],
+  "securityDefinitions": {
+    "oAuthGruffalo": {
+      "type": "oauth2",
+      "flow": "accessCode",
+      "authorizationUrl": "https://dev-pnt80ma5.us.auth0.com/oauth/authorize",
+      "tokenUrl": "https://dev-pnt80ma5.us.auth0.com/oauth/token",
+      "scopes": {
+        "createAnt": "create ant",
+        "putAnt": "update ant",
+        "deleteAnt": "delete ant",
+        "createFood": "create food",
+        "putFood": "update food",
+        "deleteFood": "delete food"
+      }
+    }
+  },
   "paths": {
     "/": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/profile": {
       "get": {
         "description": "",
         "parameters": [],
@@ -77,7 +104,14 @@
           "201": {
             "description": "Created"
           }
-        }
+        },
+        "security": [
+          {
+            "oAuthGruffalo": [
+              "createAnt"
+            ]
+          }
+        ]
       }
     },
     "/ants/{id}": {
@@ -91,7 +125,8 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string"
+            "type": "string",
+            "description": "ID do usuário."
           }
         ],
         "responses": {
@@ -141,7 +176,14 @@
           "201": {
             "description": "Created"
           }
-        }
+        },
+        "security": [
+          {
+            "oAuthGruffalo": [
+              "updateAnt"
+            ]
+          }
+        ]
       },
       "delete": {
         "description": "Delete ant",
@@ -156,10 +198,17 @@
             "type": "string"
           }
         ],
-        "responses": {}
+        "responses": {},
+        "security": [
+          {
+            "oAuthGruffalo": [
+              "deleteAnt"
+            ]
+          }
+        ]
       }
     },
-    "/food/": {
+    "/foods/": {
       "get": {
         "description": "Return all foods",
         "produces": [
@@ -213,10 +262,17 @@
           "201": {
             "description": "Created"
           }
-        }
+        },
+        "security": [
+          {
+            "oAuthGruffalo": [
+              "createFood"
+            ]
+          }
+        ]
       }
     },
-    "/food/{id}": {
+    "/foods/{id}": {
       "get": {
         "description": "Return the food with matching id",
         "produces": [
@@ -283,7 +339,14 @@
           "201": {
             "description": "Created"
           }
-        }
+        },
+        "security": [
+          {
+            "oAuthGruffalo": [
+              "updateFood"
+            ]
+          }
+        ]
       },
       "delete": {
         "description": "Delete food",
@@ -302,7 +365,14 @@
           "201": {
             "description": "Created"
           }
-        }
+        },
+        "security": [
+          {
+            "oAuthGruffalo": [
+              "deleteFood"
+            ]
+          }
+        ]
       }
     }
   }

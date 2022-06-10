@@ -17,12 +17,13 @@
 const express = require( 'express' );
 const bodyParser = require( 'body-parser' ); // get access to request parameters 
 const apiErrorHandler = require( './errors/handler' );
-const Joi = require( 'joi' ); // returns a class
+const Joi = require( 'joi' ); // returns a class for validation
+const { auth } = require('express-openid-connect'); // dereference require, store return in auth variable
+require('dotenv').config();
 
 // create port and application
 const port = process.env.PORT || 3000;
 const app = express();
-
 
 /*
 OAUTH
@@ -32,6 +33,31 @@ https://youtu.be/SBvmnHTQIPY
 https://tomanagle.medium.com/google-oauth-with-node-js-4bff90180fe6
 At this point, I´m not sure what to do with the access token that is returned.  Do I save it, is it saved for me or do I need to give permission each time?
 I expect to implement a working login this week
+
+https://www.jamesqquick.com/blog/the-easiest-way-to-add-node-js-user-authentication
+https://www.youtube.com/watch?v=w1zvS9-k7EU
+*/
+
+const config = {
+    authRequired: false,
+    auth0Logout: true,
+    secret: process.env.SECRET,
+    baseURL: process.env.BASE_URL,
+    clientID: process.env.CLIENT_ID,
+    issuerBaseURL: process.env.ISSUER_BASE_URL
+  };
+
+// auth router attaches /login, /logout, and /callback routes to the baseURL
+app.use( auth(config) );
+
+
+/*
+http://localhost:3000/login
+http://localhost:3000/logout
+
+app.get('/profile', requiresAuth(), (req, res) => {
+  res.send(JSON.stringify(req.oidc.user));
+});
 */
 
 // load routes

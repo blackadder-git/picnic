@@ -9,7 +9,8 @@ function apiErrorHandler( err, req, res, next ) {
         return;
     }
 
-    res.status( 500 ).json( "An unknown error has taken place" );
+    console.log( err );
+    res.status( 500 ).json( "An unknown error has taken place. Make sure you are logged in to post, put, or delete" );
 }
 
 module.exports = apiErrorHandler;

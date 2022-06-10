@@ -38,6 +38,7 @@ const getAnts = async ( req, res, next ) => {
 const getAnt = async ( req, res, next ) => {
     /*
     #swagger.description = 'Return the ant with matching id'
+    #swagger.parameters['id'] = { description: 'ID do usuário.' }
     */
 
     console.log ( "Debug: getAnt" );
@@ -73,7 +74,12 @@ const getAnt = async ( req, res, next ) => {
 const createAnt = async ( req, res, next ) => {
     /*
     #swagger.description = 'Create a new ant'
-    */
+    #swagger.security = [{
+            "oAuthGruffalo": [
+                "createAnt"
+            ]
+    }] */
+
 
     console.log( "Debug: createAnt" );
     console.log( "Create: ", req.body ); // made possible thanks to body-parser
@@ -82,6 +88,8 @@ const createAnt = async ( req, res, next ) => {
     const { error } = validateAnt( req.body );
 
     if (error) {
+        console.log(req.body);
+
         next( ApiError.badRequest( 'Invalid ant data: ' + error.details[0].message ));
         return;
     }
@@ -123,7 +131,11 @@ const createAnt = async ( req, res, next ) => {
 const updateAnt = async ( req, res, next ) => {
     /*
     #swagger.description = 'Update ant'
-    */
+    #swagger.security = [{
+            "oAuthGruffalo": [
+                "updateAnt"
+            ]
+    }] */
 
     console.log( "Debug: updateAnt" );
     
@@ -174,7 +186,12 @@ const updateAnt = async ( req, res, next ) => {
 const deleteAnt = async ( req, res, next ) => {
     /*
     #swagger.description = 'Delete ant
-    */
+    #swagger.security = [{
+            "oAuthGruffalo": [
+                "deleteAnt"
+            ]
+    }] */
+
 
     console.log( "Debut: deleteAnt" );
 

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Ant Picnic</title>
+</head>
+<body>
+    <h1>Admin Ant Picnic</h1>
+    <a href="/logout">logout</a>
+    <a href="/ants">Get list of ants</a>
+    <a href="/food">Get list of food</a>
+    <br>
+    <a href="/api-docs">Api documentation (must be logged in)</a>    
+    <br>
+    <form name="body" method="POST" action="/ants">
+        <labael for="name">Name:
+            <input id="name" name="name" type="text" value="Max">
+        </labael>
+        <labael for="species">Species:
+            <input  id="species" name="species" type="text" value="Fire">
+        </labael>
+        <labael for="points">Points:
+            <input id="points" name="points" type="text" value="15">
+        </labael>
+        <labael for="health">Health:
+            <input id="health" name="health" type="text" value="10">
+        </labael>
+        <labael for="colony">Colony:
+            <input id="colony" name="colony" type="text" value="Draper, Ut">
+        </labael>
+        <input type="submit" value="Create Ant">
+    </form>
+
+</body>
+</html>

@@ -68,7 +68,11 @@ const getFood = async ( req, res, next ) => {
 const createFood = async ( req, res, next ) => {
     /*
     #swagger.description = 'Create a new food'
-    */
+    #swagger.security = [{
+            "oAuthGruffalo": [
+                "createFood"
+            ]
+    }] */
 
     console.log( "Debug: createFood" );
     console.log( req.body ); // made possible thanks to body-parser
@@ -115,7 +119,11 @@ const createFood = async ( req, res, next ) => {
 const updateFood = async ( req, res, next ) => {
     /*
     #swagger.description = 'Update food'
-    */
+    #swagger.security = [{
+            "oAuthGruffalo": [
+                "updateFood"
+            ]
+    }] */
 
     console.log( "Debug: updateFood" );
     
@@ -169,7 +177,11 @@ const updateFood = async ( req, res, next ) => {
 const deleteFood = async ( req, res, next ) => {
     /*
     #swagger.description = 'Delete food'
-    */
+    #swagger.security = [{
+            "oAuthGruffalo": [
+                "deleteFood"
+            ]
+    }] */
 
     console.log( "Debug: deleteFood" );
 
